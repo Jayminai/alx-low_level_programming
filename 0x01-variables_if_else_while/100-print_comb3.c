@@ -16,7 +16,7 @@ int main(void)
 
 	while (first_num <= 57)
 {
-	n2 = first_num + 1;
+	second_num = first_num + 1;
 	while (second_num <= 57)
 {
 	putchar(first_num);
