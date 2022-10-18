@@ -1,18 +1,19 @@
-#include "_putchar"
-
+#include "main.h"
 /**
- * main: start point
+ * main - Entry point
  * Description: Prints _putchar
- * Return: always returns 0
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
-	int n = 0;
-	char name[8] = "_putchar"
-	while(n <= 8)
-	{
-		_putchar(name[n]);
-		n++;
-	}
+	_putchar('_');
+	_putchar('p');
+	_putchar('u');
+	_putchar('t');
+	_putchar('c');
+	_putchar('h');
+	_putchar('a');
+	_putchar('r');
+	_putchar('\n');
 	return (0);
 }
