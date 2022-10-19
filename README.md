@@ -1,4 +1,4 @@
-# Low level programming 
+# Low level programming
 What happens when you type gcc main.c
 What is an entry point
 What is main
