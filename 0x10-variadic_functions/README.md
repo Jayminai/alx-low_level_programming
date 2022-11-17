@@ -1,6 +1,6 @@
 # C - Variadic functions
 
-* Written by Jayminai
+* Written by Jayminai (George Godstime)
 * What are variadic functions
 * How to use va_start, va_arg and va_end macros
 * Why and how to use the const type qualifier
