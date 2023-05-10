@@ -1,44 +1,50 @@
-#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "search_algos.h"
+#include <math.h>
 
 /**
- * jump_list - searches for a value in a sorted linked list of integers
- * using the Jump search algorithm.
+ * jump_list - jump searches on singly linked list
+ * @list: pointer to head node
+ * @size: its size
+ * @value: value to search for
  *
- * @list: Pointer to the head of the linked list
- * @size: Number of nodes in the linked list
- * @value: The value to search for
- *
- * Return: Pointer to the first node where value is located or
- * if value is not present in head or if head is NULL, return NULL
+ * Return: the node found or NULL
  */
 listint_t *jump_list(listint_t *list, size_t size, int value)
 {
-	listint_t *low =  NULL, *high = NULL;
-	size_t limit = 0;
+	size_t i = 0, j = sqrt(size), k = 0, last_j = 0;
+	listint_t *last = list;
 
-	if (list != NULL)
+	if (!list)
+		return (NULL);
+
+	while (list->n < value)
 	{
-		low = list;
-		high = list;
-		while (high->next != NULL && high->index < size && high->n < value)
+		for (last_j = i, last = list, k = 0; list->next && k < j; k++)
 		{
-			low = high;
-			limit += sqrt(size);
-			while (high->index < limit && high->next != NULL)
-				high = high->next;
-			printf("Value checked at index [%lu] = [%d]\n", high->index, high->n);
+			list = list->next;
+			i++;
 		}
-		printf("Value found between indexes [%lu] and [%lu]\n",
-		       low->index, high->index);
-		while (low != NULL && low->index < size && low->index <= high->index)
-		{
-			printf("Value checked at index [%lu] = [%d]\n", low->index, low->n);
-			if (low->n == value)
-				return (low);
-			low = low->next;
-		}
+		printf("Value checked at index [%lu] = [%d]\n", i, list->n);
+		if (!list->next)
+			break;
+	}
+
+	if (!list->next)
+		j = last_j;
+	else
+		j = i >= j ? i - j : 0;
+	printf("Value found between indexes [%lu] and [%lu]\n", j, i);
+	i = i >= size ? size - 1 : i;
+	list = last;
+	while (list)
+	{
+		printf("Value checked at index [%lu] = [%d]\n", j, list->n);
+		if (list->n == value)
+			return (list);
+		j++;
+		list = list->next;
 	}
 	return (NULL);
-
 }
